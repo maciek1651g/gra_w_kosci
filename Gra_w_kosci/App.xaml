@@ -1,0 +1,7 @@
+﻿<Application
+    x:Class="Gra_w_kosci.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Gra_w_kosci">
+
+</Application>

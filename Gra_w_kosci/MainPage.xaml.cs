@@ -31,9 +31,14 @@ namespace Gra_w_kosci
         {
             MediaElement mediaElement = new MediaElement();
             var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("Hello, World!");
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("Witaj świecie!");
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
+        }
+
+        private void ShutDown(object sender, RoutedEventArgs e)
+        {
+            App.Current.Exit();
         }
     }
 }

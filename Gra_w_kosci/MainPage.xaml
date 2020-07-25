@@ -6,10 +6,61 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"> 
 
+        <!--
     <Grid>
-        <Button Content="Hello, world!" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
 
-    </Grid>
+        <Button Content="Witaj świecie!" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Padding="20" CornerRadius="20" FontSize="30" Click="Button_Click" Grid.Column="0" Grid.Row="0"/>
+        <Button Content="Witaj świecie!" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Padding="20" CornerRadius="20" FontSize="30" Click="Button_Click" Grid.Column="0" Grid.Row="0"/>
+        <Button Content="Witaj świecie!" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Padding="20" CornerRadius="20" FontSize="30" Click="Button_Click" Grid.Column="0" Grid.Row="0"/>
+    </Grid> -->
+
+    <StackPanel Background="#8EE3BA">
+        <TextBlock 
+            Text="Gra w kości"
+            VerticalAlignment="Center"
+            TextAlignment="Center"
+            FontFamily="Arial"
+            Margin="0,50,0,0"
+            FontSize="60"/>
+        
+        <Button 
+            Content="Kości uproszczone" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Margin="20,100,20,20" Padding="30,20" 
+            CornerRadius="20" FontSize="30" 
+            Click="Button_Click"
+            BorderBrush="Black"
+            Background="#C0C0C0"/>
+
+        <Button 
+            Content="Kości pełne" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Margin="20" Padding="30,20" 
+            CornerRadius="20" 
+            FontSize="30" 
+            Click="Button_Click"
+            BorderBrush="Black"
+            Background="#C0C0C0"/>
+
+        <Button 
+            Content="Zamknij"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Margin="20" Padding="30, 20" 
+            CornerRadius="20" 
+            FontSize="30" 
+            Click="ShutDown"
+            BorderBrush="Black"
+            Background="#C0C0C0"/>
+    </StackPanel>
 </Page>

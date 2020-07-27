@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Gra_w_kosci.MainPage"
+    x:Class="Gra_w_kosci.liczbaGraczy"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Gra_w_kosci"
@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
 
     <Page.Resources>
         <ResourceDictionary>
@@ -25,42 +24,53 @@
 
     <StackPanel Style="{StaticResource tlo}">
         <TextBlock 
-            Text="Gra w kości"
+            Text="Wybierz liczbę graczy"
             VerticalAlignment="Center"
             TextAlignment="Center"
             FontFamily="Arial"
             Margin="0,50,0,0"
             FontSize="60"/>
-        
+
         <Button 
-            Content="Kości uproszczone"
+            Content="Jeden gracz vs komputer" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Margin="20,100,20,20" Padding="30,20" 
             CornerRadius="20" FontSize="30" 
-            Click="Uproszczone_Click"
+            Click="Button_Click"
             BorderBrush="Black"
             Background="#C0C0C0"/>
 
         <Button 
-            Content="Kości pełne" 
+            Content="Dwóch graczy" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Margin="20" Padding="30,20" 
             CornerRadius="20" 
             FontSize="30" 
-            Click="Pelne_Click"
+            Click="Button_Click_1"
             BorderBrush="Black"
             Background="#C0C0C0"/>
 
         <Button 
-            Content="Zamknij"
+            Content="Trzech graczy"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Margin="20" Padding="30, 20" 
             CornerRadius="20" 
             FontSize="30" 
-            Click="ShutDown"
+            Click="Button_Click_2"
+            BorderBrush="Black"
+            Background="#C0C0C0"/>
+
+        <Button 
+            Content="Czterech graczy"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Margin="20" Padding="30, 20" 
+            CornerRadius="20" 
+            FontSize="30" 
+            Click="Button_Click_3"
             BorderBrush="Black"
             Background="#C0C0C0"/>
     </StackPanel>

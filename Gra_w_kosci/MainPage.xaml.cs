@@ -27,13 +27,19 @@ namespace Gra_w_kosci
             this.InitializeComponent();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Uproszczone_Click(object sender, RoutedEventArgs e)
         {
-            MediaElement mediaElement = new MediaElement();
-            var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("Witaj świecie!");
-            mediaElement.SetSource(stream, stream.ContentType);
-            mediaElement.Play();
+            NastepnaStrona(0);
+        }
+
+        private void Pelne_Click(object sender, RoutedEventArgs e)
+        {
+            NastepnaStrona(1);
+        }
+
+        private void NastepnaStrona(int typGry)
+        {
+            this.Frame.Navigate(typeof(liczbaGraczy), typGry);
         }
 
         private void ShutDown(object sender, RoutedEventArgs e)

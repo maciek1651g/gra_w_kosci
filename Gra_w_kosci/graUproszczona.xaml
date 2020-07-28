@@ -1,0 +1,157 @@
+﻿<Page
+    x:Class="Gra_w_kosci.graUproszczona"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Gra_w_kosci"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Grid" x:Key="tlo">
+                <Setter Property="Background" Value="#8EE3BA"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="kostka">
+                <Setter Property="MinWidth" Value="50"/>
+                <Setter Property="MinHeight" Value="50"/>
+                <Setter Property="MaxWidth" Value="100"/>
+                <Setter Property="MaxHeight" Value="100"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="przyciski">
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="75"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style TargetType="TextBlock" x:Key="figury">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="punkty">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="MinHeight" Value="40"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Content" Value=""/>
+            </Style>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#A0A0A0"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Style="{StaticResource tlo}" x:Name="strona" Margin="0,0,10,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="480*" x:Name="kol1"/>
+            <ColumnDefinition Width="480*" x:Name="kol2"/>
+            <ColumnDefinition Width="480*" x:Name="kol3"/>
+            <ColumnDefinition Width="480*" x:Name="kol4"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Background="#9FF4CB">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Gracz1" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
+            <TextBlock Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="2" Grid.Row="2" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="3" Grid.Row="3" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="4" Grid.Row="4" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="5" Grid.Row="5" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="6" Grid.Row="6" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="bonus" Grid.Row="7" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="trójka" Grid.Row="8" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="kareta" Grid.Row="9" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="full" Grid.Row="10" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="mały strit" Grid.Row="11" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="duży strit" Grid.Row="12" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="poker" Grid.Row="13" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="szansa" Grid.Row="14" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="suma" Grid.Row="15" Grid.Column="0" Style="{StaticResource figury}"/>
+            
+            
+            <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="5" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="6" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="7" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="8" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="9" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="10" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="11" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="12" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="13" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="14" Grid.Column="1" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="15" Grid.Column="1" Style="{StaticResource punkty}"/>
+            
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="1"/>
+            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="2"/>
+            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="3"/>
+            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="4"/>
+            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="5"/>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="4">
+            <Button Content="Nowa gra" Style="{StaticResource przyciski}"/>
+            <Button Content="Menu główne" Style="{StaticResource przyciski}"/>
+            <Button Content="Wyjdź z gry" Style="{StaticResource przyciski}"/>
+        </StackPanel>
+        
+    </Grid>
+</Page>

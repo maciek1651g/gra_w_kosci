@@ -122,6 +122,9 @@
     <Compile Include="gra.xaml.cs">
       <DependentUpon>gra.xaml</DependentUpon>
     </Compile>
+    <Compile Include="graUproszczona.xaml.cs">
+      <DependentUpon>graUproszczona.xaml</DependentUpon>
+    </Compile>
     <Compile Include="liczbaGraczy.xaml.cs">
       <DependentUpon>liczbaGraczy.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="gra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="graUproszczona.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -44,6 +44,7 @@
 
         <Button 
             Content="Kości pełne" 
+            IsEnabled="False"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Margin="20" Padding="30,20" 

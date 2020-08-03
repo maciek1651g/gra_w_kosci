@@ -14,7 +14,7 @@
                 <Setter Property="Background" Value="#8EE3BA"/>
             </Style>
 
-            <Style TargetType="Button" x:Key="kostka">
+            <Style TargetType="Button" x:Key="kostka" x:Name="kostki">
                 <Setter Property="Width" Value="75"/>
                 <Setter Property="Height" Value="75"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -23,6 +23,7 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Background" Value="White"/>
+                <Setter Property="IsEnabled" Value="True"/>
             </Style>
 
             <Style TargetType="Button" x:Key="przyciski">
@@ -57,10 +58,10 @@
 
     <Grid Style="{StaticResource tlo}" x:Name="strona" Margin="0,0,10,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="480*" x:Name="kol1"/>
-            <ColumnDefinition Width="480*" x:Name="kol2"/>
-            <ColumnDefinition Width="480*" x:Name="kol3"/>
-            <ColumnDefinition Width="480*" x:Name="kol4"/>
+            <ColumnDefinition Width="480*"/>
+            <ColumnDefinition Width="480*"/>
+            <ColumnDefinition Width="480*"/>
+            <ColumnDefinition Width="480*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
@@ -138,33 +139,31 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource kostka}" Grid.Column="1">
+            <Button Style="{StaticResource kostka}" Grid.Column="1" Click="KostkaKliknieta" x:Name="kostka1">
                 <Image Source="Assets/kostki/1.png" Stretch="UniformToFill"/>
             </Button>
-            <Button Style="{StaticResource kostka}" Grid.Column="2">
+            <Button Style="{StaticResource kostka}" Grid.Column="2" Click="KostkaKliknieta" x:Name="kostka2">
                 <Image Source="Assets/kostki/2.png" Stretch="UniformToFill"/>
             </Button>
-            <Button Style="{StaticResource kostka}" Grid.Column="3">
+            <Button Style="{StaticResource kostka}" Grid.Column="3" Click="KostkaKliknieta" x:Name="kostka3">
                 <Image Source="Assets/kostki/3.png" Stretch="UniformToFill"/>
             </Button>
-            <Button Style="{StaticResource kostka}" Grid.Column="4">
+            <Button Style="{StaticResource kostka}" Grid.Column="4" Click="KostkaKliknieta" x:Name="kostka4">
                 <Image Source="Assets/kostki/4.png" Stretch="UniformToFill"/>
             </Button>
-            <Button Style="{StaticResource kostka}" Grid.Column="5">
+            <Button Style="{StaticResource kostka}" Grid.Column="5" Click="KostkaKliknieta" x:Name="kostka5">
                 <Image Source="Assets/kostki/5.png" Stretch="UniformToFill"/>
-            </Button>
-            <Button Style="{StaticResource kostka}" Grid.Column="6">
-                <Image Source="Assets/kostki/6.png" Stretch="UniformToFill"/>
             </Button>
         </Grid>
 
+
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="4">
-            <Button Content="Nowa gra" Style="{StaticResource przyciski}"/>
-            <Button Content="Menu główne" Style="{StaticResource przyciski}"/>
-            <Button Content="Wyjdź z gry" Style="{StaticResource przyciski}"/>
+            <Button Content="Rzuć kośćmi" Style="{StaticResource przyciski}" Click="RzutKoscmi"/>
+            <Button Content="Nowa gra" Style="{StaticResource przyciski}" Click="NowaGra"/>
+            <Button Content="Menu główne" Style="{StaticResource przyciski}" Click="MenuGlowne"/>
+            <Button Content="Wyjdź z gry" Style="{StaticResource przyciski}" Click="ShutDown"/>
         </StackPanel>
         
     </Grid>

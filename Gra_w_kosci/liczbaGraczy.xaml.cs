@@ -75,7 +75,8 @@ namespace Gra_w_kosci
         /// <param name="typGry">pierwsza cyfra to liczba graczy, druga cyfra to typ gry 0-uproszczony, 1-pełny</param>
         private void StartGry(int typGry)
         {
-            this.Frame.Navigate(typeof(gra), typGry);
+            //this.Frame.Navigate(typeof(gra), typGry);
+            this.Frame.Navigate(typeof(graUproszczona),typGry/10);
         }
     }
 }

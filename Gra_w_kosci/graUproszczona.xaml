@@ -15,14 +15,14 @@
             </Style>
 
             <Style TargetType="Button" x:Key="kostka">
-                <Setter Property="MinWidth" Value="50"/>
-                <Setter Property="MinHeight" Value="50"/>
-                <Setter Property="MaxWidth" Value="100"/>
-                <Setter Property="MaxHeight" Value="100"/>
+                <Setter Property="Width" Value="75"/>
+                <Setter Property="Height" Value="75"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="BorderBrush" Value="Black"/>
                 <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Background" Value="White"/>
             </Style>
 
             <Style TargetType="Button" x:Key="przyciski">
@@ -138,13 +138,27 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="1"/>
-            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="2"/>
-            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="3"/>
-            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="4"/>
-            <Button Style="{StaticResource kostka}" Content="ASD" Grid.Column="5"/>
+
+            <Button Style="{StaticResource kostka}" Grid.Column="1">
+                <Image Source="Assets/kostki/1.png" Stretch="UniformToFill"/>
+            </Button>
+            <Button Style="{StaticResource kostka}" Grid.Column="2">
+                <Image Source="Assets/kostki/2.png" Stretch="UniformToFill"/>
+            </Button>
+            <Button Style="{StaticResource kostka}" Grid.Column="3">
+                <Image Source="Assets/kostki/3.png" Stretch="UniformToFill"/>
+            </Button>
+            <Button Style="{StaticResource kostka}" Grid.Column="4">
+                <Image Source="Assets/kostki/4.png" Stretch="UniformToFill"/>
+            </Button>
+            <Button Style="{StaticResource kostka}" Grid.Column="5">
+                <Image Source="Assets/kostki/5.png" Stretch="UniformToFill"/>
+            </Button>
+            <Button Style="{StaticResource kostka}" Grid.Column="6">
+                <Image Source="Assets/kostki/6.png" Stretch="UniformToFill"/>
+            </Button>
         </Grid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="4">

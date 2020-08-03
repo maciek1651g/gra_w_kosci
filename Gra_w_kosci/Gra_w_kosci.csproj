@@ -139,6 +139,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\kostki\1.png" />
+    <Content Include="Assets\kostki\2.png" />
+    <Content Include="Assets\kostki\3.png" />
+    <Content Include="Assets\kostki\4.png" />
+    <Content Include="Assets\kostki\5.png" />
+    <Content Include="Assets\kostki\6.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -175,6 +181,7 @@
       <Version>6.2.10</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

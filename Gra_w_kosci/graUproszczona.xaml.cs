@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,10 +27,13 @@ namespace Gra_w_kosci
     {
         int rzut = 0;
         int liczbaGraczy = 1;
+        int[] wartosci = new int[5];
+        int[] kosciDorzucenia = new[] { 0, 0, 0, 0, 0 };
 
         public graUproszczona()
         {
             this.InitializeComponent();
+            Start();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -42,10 +46,34 @@ namespace Gra_w_kosci
             base.OnNavigatedTo(e);
         }
 
+        private void Start()
+        {
+            switch(liczbaGraczy)
+            {
+                case 1:
+                    gracz1.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
         private void KostkaKliknieta(object sender, RoutedEventArgs e)
         {
-            var przycisk = (Button)sender;
+            if (rzut >= 1 && rzut <= 2)
+            {
+                var przycisk = (Button)sender;
+                int numerKostki = przycisk.Name[przycisk.Name.Length - 1] - '0';
 
+                if (kosciDorzucenia[numerKostki - 1] == 0)
+                {
+                    kosciDorzucenia[numerKostki - 1] = 1;
+                    przycisk.Background = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    kosciDorzucenia[numerKostki - 1] = 0;
+                    przycisk.Background = new SolidColorBrush(Colors.White);
+                }
+            }
         }
 
         private void PrzelaczKosci()
@@ -64,65 +92,85 @@ namespace Gra_w_kosci
 
             if (rzut==0)
             {
-                int[] wartosci = Losowanko();
+                for (int i = 0; i < kosciDorzucenia.Length; i++)
+                {
+                    kosciDorzucenia[i] = 1;
+                }
 
-                WyswietlKosci(new[] { 1, 2, 3, 4, 5 }, wartosci);
+                Losowanko(kosciDorzucenia, wartosci);
+
+                WyswietlKosci(kosciDorzucenia, wartosci);
 
                 przycisk.Content = "Przerzuć kości";
             }
             else if(rzut==1)
             {
+                Losowanko(kosciDorzucenia, wartosci);
 
+                WyswietlKosci(kosciDorzucenia, wartosci);
             }
             else if(rzut==2)
             {
+                Losowanko(kosciDorzucenia, wartosci);
+
+                WyswietlKosci(kosciDorzucenia, wartosci);
+
                 przycisk.IsEnabled = false;
             }
 
             rzut++;
         }
 
-        private void WyswietlKosci(int[] kostki, int[] wartosci)
+        private void WyswietlKosci(int[] kosciDorzucenia, int[] wartosci)
         {
-            for (int i = 0; i < kostki.Length; i++)
+            for (int i = 0; i < kosciDorzucenia.Length; i++)
             {
-                BitmapImage Obraz = new BitmapImage(new Uri("ms-appx:///Assets/kostki/" + wartosci[i] + ".png"));
-                Image content = null;
-
-                switch (kostki[i])
+                if (kosciDorzucenia[i] != 0)
                 {
-                    case 1:
-                        content = (Image)kostka1.Content;
-                        break;
-                    case 2:
-                        content = (Image)kostka2.Content;
-                        break;
-                    case 3:
-                        content = (Image)kostka3.Content;
-                        break;
-                    case 4:
-                        content = (Image)kostka4.Content;
-                        break;
-                    case 5:
-                        content = (Image)kostka5.Content;
-                        break;
-                }
+                    BitmapImage Obraz = new BitmapImage(new Uri("ms-appx:///Assets/kostki/" + wartosci[i] + ".png"));
+                    Image content = null;
 
-                content.Source = Obraz;
+                    switch (i+1)
+                    {
+                        case 1:
+                            content = (Image)kostka1.Content;
+                            kostka1.Background = new SolidColorBrush(Colors.White);
+                            break;
+                        case 2:
+                            content = (Image)kostka2.Content;
+                            kostka2.Background = new SolidColorBrush(Colors.White);
+                            break;
+                        case 3:
+                            content = (Image)kostka3.Content;
+                            kostka3.Background = new SolidColorBrush(Colors.White);
+                            break;
+                        case 4:
+                            content = (Image)kostka4.Content;
+                            kostka4.Background = new SolidColorBrush(Colors.White);
+                            break;
+                        case 5:
+                            content = (Image)kostka5.Content;
+                            kostka5.Background = new SolidColorBrush(Colors.White);
+                            break;
+                    }
+
+                    kosciDorzucenia[i] = 0;
+                    content.Source = Obraz;
+                }
             }
         }
 
-        private int[] Losowanko()
+        private void Losowanko(int[] kosciDorzucenia, int[] wartosci)
         {
-            int[] tab = new int[5];
             Random random = new Random();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < kosciDorzucenia.Length; i++)
             {
-                tab[i] = random.Next(1,6);
+                if(kosciDorzucenia[i]!=0)
+                {
+                    wartosci[i] = random.Next(1, 6);
+                }
             }
-
-            return tab;
         }
 
         private void NowaGra(object sender, RoutedEventArgs e)
@@ -137,6 +185,14 @@ namespace Gra_w_kosci
         private void ShutDown(object sender, RoutedEventArgs e)
         {
             App.Current.Exit();
+        }
+
+        private void PodajWynik(object sender, RoutedEventArgs e)
+        {
+            var przycisk = (Button)sender;
+
+            int kolumna = Grid.GetColumn(przycisk);
+            int wiersz = Grid.GetRow(przycisk);
         }
     }
 }

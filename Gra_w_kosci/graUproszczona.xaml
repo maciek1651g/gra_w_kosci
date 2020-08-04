@@ -51,6 +51,7 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#A0A0A0"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="White"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
@@ -69,7 +70,7 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Background="#9FF4CB">
+        <Grid Grid.Row="0" Grid.Column="0" Background="#9FF4CB" BorderBrush="Black" BorderThickness="1" x:Name="gracz1" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -112,24 +113,27 @@
             <TextBlock Text="suma" Grid.Row="15" Grid.Column="0" Style="{StaticResource figury}"/>
             
             
-            <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="4" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="5" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="6" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="7" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="8" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="9" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="10" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="11" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="12" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="13" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="14" Grid.Column="1" Style="{StaticResource punkty}"/>
-            <Button Grid.Row="15" Grid.Column="1" Style="{StaticResource punkty}"/>
-            
+            <Button Grid.Row="1" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="2" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="3" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="4" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="5" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="6" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="9" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="10" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="11" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="12" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="13" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="14" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+
+
+            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonus" Text="0"/>
+            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynik" Text="0"/>
+
         </Grid>
-        
+
+
         <Grid Grid.Row="1" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -142,19 +146,19 @@
             </Grid.ColumnDefinitions>
 
             <Button Style="{StaticResource kostka}" Grid.Column="1" Click="KostkaKliknieta" x:Name="kostka1">
-                <Image Source="Assets/kostki/1.png" Stretch="UniformToFill"/>
+                <Image Source="Assets/kostki/0.png" Stretch="UniformToFill"/>
             </Button>
             <Button Style="{StaticResource kostka}" Grid.Column="2" Click="KostkaKliknieta" x:Name="kostka2">
-                <Image Source="Assets/kostki/2.png" Stretch="UniformToFill"/>
+                <Image Source="Assets/kostki/0.png" Stretch="UniformToFill"/>
             </Button>
             <Button Style="{StaticResource kostka}" Grid.Column="3" Click="KostkaKliknieta" x:Name="kostka3">
-                <Image Source="Assets/kostki/3.png" Stretch="UniformToFill"/>
+                <Image Source="Assets/kostki/0.png" Stretch="UniformToFill"/>
             </Button>
             <Button Style="{StaticResource kostka}" Grid.Column="4" Click="KostkaKliknieta" x:Name="kostka4">
-                <Image Source="Assets/kostki/4.png" Stretch="UniformToFill"/>
+                <Image Source="Assets/kostki/0.png" Stretch="UniformToFill"/>
             </Button>
             <Button Style="{StaticResource kostka}" Grid.Column="5" Click="KostkaKliknieta" x:Name="kostka5">
-                <Image Source="Assets/kostki/5.png" Stretch="UniformToFill"/>
+                <Image Source="Assets/kostki/0.png" Stretch="UniformToFill"/>
             </Button>
         </Grid>
 

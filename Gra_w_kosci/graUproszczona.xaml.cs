@@ -72,6 +72,8 @@ namespace Gra_w_kosci
                     break;
             }
             punktyGraczy = new int[liczbaGraczy, 2];
+            aktualnyGracz = 0;
+            gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
         }
 
         private void KostkaKliknieta(object sender, RoutedEventArgs e)
@@ -207,13 +209,14 @@ namespace Gra_w_kosci
 
         private void PodajWynik(object sender, RoutedEventArgs e)
         {
-            if (rzut <= 0)
+            var przycisk = (Button)sender;
+            FrameworkElement siatka = (FrameworkElement)przycisk.Parent;
+            int kolumna = Grid.GetColumn(siatka);
+            int wiersz = Grid.GetRow(przycisk);
+
+            if (rzut <= 0 || kolumna != aktualnyGracz)
                 return;
 
-            var przycisk = (Button)sender;
-
-            int kolumna = Grid.GetColumn(przycisk);
-            int wiersz = Grid.GetRow(przycisk);
             int punkty=0;
             bool flaga = false;
 
@@ -312,6 +315,56 @@ namespace Gra_w_kosci
             
             przycisk.Content = punkty;
             przycisk.IsEnabled = false;
+            NastepnyGracz();
+        }
+
+        private void NastepnyGracz()
+        {
+            if(liczbaGraczy==1)
+            {
+                //ruch komputera
+            }
+            else
+            {
+                switch(aktualnyGracz)
+                {
+                    case 0:
+                        gracz1.BorderBrush = new SolidColorBrush(Colors.Black);
+                        break;
+                    case 1:
+                        gracz2.BorderBrush = new SolidColorBrush(Colors.Black);
+                        break;
+                    case 2:
+                        gracz2.BorderBrush = new SolidColorBrush(Colors.Black);
+                        break;
+                    case 3:
+                        gracz3.BorderBrush = new SolidColorBrush(Colors.Black);
+                        break;
+                }
+
+                aktualnyGracz = (aktualnyGracz + 1) % liczbaGraczy;
+
+                switch (aktualnyGracz)
+                {
+                    case 0:
+                        gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                    case 1:
+                        gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                    case 2:
+                        gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                    case 3:
+                        gracz3.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                }
+            }
+
+            wartosciKosci = new int[5];
+            kosciDoRzucenia = new[] { 1, 1, 1, 1, 1 };
+            WyswietlKosci(kosciDoRzucenia,wartosciKosci);
+            rzut = 0;
         }
     }
 }

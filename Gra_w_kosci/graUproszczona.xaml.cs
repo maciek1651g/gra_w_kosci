@@ -27,8 +27,10 @@ namespace Gra_w_kosci
     {
         int rzut = 0;
         int liczbaGraczy = 1;
-        int[] wartosci = new int[5];
-        int[] kosciDorzucenia = new[] { 0, 0, 0, 0, 0 };
+        int[] wartosciKosci = new int[5];
+        int[] kosciDoRzucenia = new[] { 0, 0, 0, 0, 0 };
+        int[,] punktyGraczy;
+        int aktualnyGracz = 0;
 
         public graUproszczona()
         {
@@ -54,6 +56,7 @@ namespace Gra_w_kosci
                     gracz1.Visibility = Visibility.Visible;
                     break;
             }
+            punktyGraczy = new int[liczbaGraczy, 2];
         }
 
         private void KostkaKliknieta(object sender, RoutedEventArgs e)
@@ -63,14 +66,14 @@ namespace Gra_w_kosci
                 var przycisk = (Button)sender;
                 int numerKostki = przycisk.Name[przycisk.Name.Length - 1] - '0';
 
-                if (kosciDorzucenia[numerKostki - 1] == 0)
+                if (kosciDoRzucenia[numerKostki - 1] == 0)
                 {
-                    kosciDorzucenia[numerKostki - 1] = 1;
+                    kosciDoRzucenia[numerKostki - 1] = 1;
                     przycisk.Background = new SolidColorBrush(Colors.Red);
                 }
                 else
                 {
-                    kosciDorzucenia[numerKostki - 1] = 0;
+                    kosciDoRzucenia[numerKostki - 1] = 0;
                     przycisk.Background = new SolidColorBrush(Colors.White);
                 }
             }
@@ -92,28 +95,28 @@ namespace Gra_w_kosci
 
             if (rzut==0)
             {
-                for (int i = 0; i < kosciDorzucenia.Length; i++)
+                for (int i = 0; i < kosciDoRzucenia.Length; i++)
                 {
-                    kosciDorzucenia[i] = 1;
+                    kosciDoRzucenia[i] = 1;
                 }
 
-                Losowanko(kosciDorzucenia, wartosci);
+                Losowanko(kosciDoRzucenia, wartosciKosci);
 
-                WyswietlKosci(kosciDorzucenia, wartosci);
+                WyswietlKosci(kosciDoRzucenia, wartosciKosci);
 
                 przycisk.Content = "Przerzuć kości";
             }
             else if(rzut==1)
             {
-                Losowanko(kosciDorzucenia, wartosci);
+                Losowanko(kosciDoRzucenia, wartosciKosci);
 
-                WyswietlKosci(kosciDorzucenia, wartosci);
+                WyswietlKosci(kosciDoRzucenia, wartosciKosci);
             }
             else if(rzut==2)
             {
-                Losowanko(kosciDorzucenia, wartosci);
+                Losowanko(kosciDoRzucenia, wartosciKosci);
 
-                WyswietlKosci(kosciDorzucenia, wartosci);
+                WyswietlKosci(kosciDoRzucenia, wartosciKosci);
 
                 przycisk.IsEnabled = false;
             }
@@ -193,6 +196,73 @@ namespace Gra_w_kosci
 
             int kolumna = Grid.GetColumn(przycisk);
             int wiersz = Grid.GetRow(przycisk);
+            int punkty=0;
+            bool flaga = false;
+
+            if(punktyGraczy[aktualnyGracz,1]<63)
+            {
+                flaga = true;
+            }
+
+            switch(wiersz)
+            {
+                case 1:
+                    punkty = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci,1);
+                    punktyGraczy[aktualnyGracz,1] += punkty;
+                    break;
+                case 2:
+                    punkty = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 2);
+                    punktyGraczy[aktualnyGracz, 1] += punkty;
+                    break;
+                case 3:
+                    punkty = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 3);
+                    punktyGraczy[aktualnyGracz, 1] += punkty;
+                    break;
+                case 4:
+                    punkty = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 4);
+                    punktyGraczy[aktualnyGracz, 1] += punkty;
+                    break;
+                case 5:
+                    punkty = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 5);
+                    punktyGraczy[aktualnyGracz, 1] += punkty;
+                    break;
+                case 6:
+                    punkty = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 6);
+                    punktyGraczy[aktualnyGracz, 1] += punkty;
+                    break;
+                case 8:
+                    punkty = LiczeniePunktow.TrojkaKosci(wartosciKosci);
+                    break;
+                case 9:
+                    punkty = LiczeniePunktow.CzworkaKosci(wartosciKosci);
+                    break;
+                case 10:
+                    punkty = LiczeniePunktow.Full(wartosciKosci);
+                    break;
+                case 11:
+                    punkty = LiczeniePunktow.MalyStrit(wartosciKosci);
+                    break;
+                case 12:
+                    punkty = LiczeniePunktow.DuzyStrit(wartosciKosci);
+                    break;
+                case 13:
+                    punkty = LiczeniePunktow.Poker(wartosciKosci);
+                    break;
+                case 14:
+                    punkty = LiczeniePunktow.Szansa(wartosciKosci);
+                    break;
+            }
+
+            if (punktyGraczy[aktualnyGracz, 1] >= 63 && flaga)
+            {
+                punktyGraczy[aktualnyGracz, 0] += 35;
+                bonus.Text = "35";
+            }
+
+            punktyGraczy[aktualnyGracz, 0] += punkty;
+            przycisk.Content = punkty;
+            przycisk.IsEnabled = false;
+            wynik.Text = punktyGraczy[aktualnyGracz, 0].ToString();
         }
     }
 }

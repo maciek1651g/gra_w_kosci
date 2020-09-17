@@ -35,17 +35,16 @@ namespace Gra_w_kosci
         public graUproszczona()
         {
             this.InitializeComponent();
-            Start();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter != null)
             {
-                //liczbaGraczy = Convert.ToInt32(e.Parameter);
+                liczbaGraczy = Convert.ToInt32(e.Parameter);
             }
-
             base.OnNavigatedTo(e);
+            Start();
         }
 
         private void Start()
@@ -54,6 +53,22 @@ namespace Gra_w_kosci
             {
                 case 1:
                     gracz1.Visibility = Visibility.Visible;
+                    komputer.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    gracz1.Visibility = Visibility.Visible;
+                    gracz2.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    gracz1.Visibility = Visibility.Visible;
+                    gracz2.Visibility = Visibility.Visible;
+                    gracz3.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    gracz1.Visibility = Visibility.Visible;
+                    gracz2.Visibility = Visibility.Visible;
+                    gracz3.Visibility = Visibility.Visible;
+                    gracz4.Visibility = Visibility.Visible;
                     break;
             }
             punktyGraczy = new int[liczbaGraczy, 2];
@@ -178,7 +193,7 @@ namespace Gra_w_kosci
 
         private void NowaGra(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(graUproszczona));
+            this.Frame.Navigate(typeof(liczbaGraczy));
         }
         private void MenuGlowne(object sender, RoutedEventArgs e)
         {
@@ -192,6 +207,9 @@ namespace Gra_w_kosci
 
         private void PodajWynik(object sender, RoutedEventArgs e)
         {
+            if (rzut <= 0)
+                return;
+
             var przycisk = (Button)sender;
 
             int kolumna = Grid.GetColumn(przycisk);
@@ -256,13 +274,44 @@ namespace Gra_w_kosci
             if (punktyGraczy[aktualnyGracz, 1] >= 63 && flaga)
             {
                 punktyGraczy[aktualnyGracz, 0] += 35;
-                bonus.Text = "35";
+
+                switch (aktualnyGracz+1)
+                {
+                    case 1:
+                        bonusGracz1.Text = "35";
+                        break;
+                    case 2:
+                        bonusGracz2.Text = "35";
+                        break;
+                    case 3:
+                        bonusGracz3.Text = "35";
+                        break;
+                    case 4:
+                        bonusGracz4.Text = "35";
+                        break;
+                }
             }
 
             punktyGraczy[aktualnyGracz, 0] += punkty;
+
+            switch (aktualnyGracz+1)
+            {
+                case 1:
+                    wynikGracz1.Text = punktyGraczy[aktualnyGracz, 0].ToString();
+                    break;
+                case 2:
+                    wynikGracz2.Text = punktyGraczy[aktualnyGracz, 0].ToString();
+                    break;
+                case 3:
+                    wynikGracz3.Text = punktyGraczy[aktualnyGracz, 0].ToString();
+                    break;
+                case 4:
+                    wynikGracz4.Text = punktyGraczy[aktualnyGracz, 0].ToString();
+                    break;
+            }
+            
             przycisk.Content = punkty;
             przycisk.IsEnabled = false;
-            wynik.Text = punktyGraczy[aktualnyGracz, 0].ToString();
         }
     }
 }

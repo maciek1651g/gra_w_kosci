@@ -95,7 +95,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Gracz1" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
+            <TextBlock Text="Gracz 1" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
             <TextBlock Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource figury}"/>
             <TextBlock Text="2" Grid.Row="2" Grid.Column="0" Style="{StaticResource figury}"/>
             <TextBlock Text="3" Grid.Row="3" Grid.Column="0" Style="{StaticResource figury}"/>
@@ -128,12 +128,259 @@
             <Button Grid.Row="14" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
 
 
-            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonus" Text="0"/>
-            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynik" Text="0"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonusGracz1" Text="0"/>
+            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynikGracz1" Text="0"/>
 
         </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Background="#9FF4CB" BorderBrush="Black" BorderThickness="1" x:Name="gracz2" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Gracz 2" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
+            <TextBlock Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="2" Grid.Row="2" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="3" Grid.Row="3" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="4" Grid.Row="4" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="5" Grid.Row="5" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="6" Grid.Row="6" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="bonus" Grid.Row="7" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="trójka" Grid.Row="8" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="kareta" Grid.Row="9" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="full" Grid.Row="10" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="mały strit" Grid.Row="11" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="duży strit" Grid.Row="12" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="poker" Grid.Row="13" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="szansa" Grid.Row="14" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="suma" Grid.Row="15" Grid.Column="0" Style="{StaticResource figury}"/>
 
 
+            <Button Grid.Row="1" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="2" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="3" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="4" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="5" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="6" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="9" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="10" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="11" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="12" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="13" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="14" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+
+
+            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonusGracz2" Text="0"/>
+            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynikGracz2" Text="0"/>
+
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Background="#9FF4CB" BorderBrush="Black" BorderThickness="1" x:Name="komputer" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Komputer" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
+            <TextBlock Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="2" Grid.Row="2" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="3" Grid.Row="3" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="4" Grid.Row="4" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="5" Grid.Row="5" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="6" Grid.Row="6" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="bonus" Grid.Row="7" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="trójka" Grid.Row="8" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="kareta" Grid.Row="9" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="full" Grid.Row="10" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="mały strit" Grid.Row="11" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="duży strit" Grid.Row="12" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="poker" Grid.Row="13" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="szansa" Grid.Row="14" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="suma" Grid.Row="15" Grid.Column="0" Style="{StaticResource figury}"/>
+
+
+            <Button Grid.Row="1" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="2" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="3" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="4" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="5" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="6" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="9" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="10" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="11" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="12" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="13" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="14" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+
+
+            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonusKomputer" Text="0"/>
+            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynikKomputer" Text="0"/>
+
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2" Background="#9FF4CB" BorderBrush="Black" BorderThickness="1" x:Name="gracz3" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Gracz 3" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
+            <TextBlock Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="2" Grid.Row="2" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="3" Grid.Row="3" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="4" Grid.Row="4" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="5" Grid.Row="5" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="6" Grid.Row="6" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="bonus" Grid.Row="7" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="trójka" Grid.Row="8" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="kareta" Grid.Row="9" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="full" Grid.Row="10" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="mały strit" Grid.Row="11" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="duży strit" Grid.Row="12" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="poker" Grid.Row="13" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="szansa" Grid.Row="14" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="suma" Grid.Row="15" Grid.Column="0" Style="{StaticResource figury}"/>
+
+
+            <Button Grid.Row="1" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="2" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="3" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="4" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="5" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="6" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="9" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="10" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="11" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="12" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="13" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="14" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+
+
+            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonusGracz3" Text="0"/>
+            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynikGracz3" Text="0"/>
+
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3" Background="#9FF4CB" BorderBrush="Black" BorderThickness="1" x:Name="gracz4" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Gracz 4" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource figury}"/>
+            <TextBlock Text="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="2" Grid.Row="2" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="3" Grid.Row="3" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="4" Grid.Row="4" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="5" Grid.Row="5" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="6" Grid.Row="6" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="bonus" Grid.Row="7" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="trójka" Grid.Row="8" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="kareta" Grid.Row="9" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="full" Grid.Row="10" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="mały strit" Grid.Row="11" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="duży strit" Grid.Row="12" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="poker" Grid.Row="13" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="szansa" Grid.Row="14" Grid.Column="0" Style="{StaticResource figury}"/>
+            <TextBlock Text="suma" Grid.Row="15" Grid.Column="0" Style="{StaticResource figury}"/>
+
+
+            <Button Grid.Row="1" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="2" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="3" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="4" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="5" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="6" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="9" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="10" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="11" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="12" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="13" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+            <Button Grid.Row="14" Grid.Column="1" Click="PodajWynik" Style="{StaticResource punkty}"/>
+
+
+            <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource figury}" x:Name="bonusGracz4" Text="0"/>
+            <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource figury}" x:Name="wynikGracz4" Text="0"/>
+
+        </Grid>
+        
         <Grid Grid.Row="1" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

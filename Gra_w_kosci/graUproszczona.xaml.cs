@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,6 +32,7 @@ namespace Gra_w_kosci
         int[] kosciDoRzucenia = new[] { 0, 0, 0, 0, 0 };
         int[,] punktyGraczy;
         int aktualnyGracz = 0;
+        int kolejka=1;
 
         public graUproszczona()
         {
@@ -73,6 +75,7 @@ namespace Gra_w_kosci
             }
             punktyGraczy = new int[liczbaGraczy, 2];
             aktualnyGracz = 0;
+            kolejka = 1;
             gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
         }
 
@@ -195,16 +198,31 @@ namespace Gra_w_kosci
 
         private void NowaGra(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(liczbaGraczy));
+            var messageDialog = new MessageDialog("Czy na pewno chcesz przerwać aktualną grę?");
+            messageDialog.Commands.Add(new UICommand("Tak", new UICommandInvokedHandler(this.NowaGra2)));
+            messageDialog.Commands.Add(new UICommand("Nie"));
+            messageDialog.DefaultCommandIndex = 0;
+            messageDialog.CancelCommandIndex = 1;
+            messageDialog.ShowAsync();
         }
         private void MenuGlowne(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            var messageDialog = new MessageDialog("Czy na pewno chcesz przerwać aktualną grę?");
+            messageDialog.Commands.Add(new UICommand("Tak", new UICommandInvokedHandler(this.StronaGlowna)));
+            messageDialog.Commands.Add(new UICommand("Nie"));
+            messageDialog.DefaultCommandIndex = 0;
+            messageDialog.CancelCommandIndex = 1;
+            messageDialog.ShowAsync();
         }
 
         private void ShutDown(object sender, RoutedEventArgs e)
         {
-            App.Current.Exit();
+            var messageDialog = new MessageDialog("Czy na pewno chcesz przerwać aktualną grę?");
+            messageDialog.Commands.Add(new UICommand("Tak", new UICommandInvokedHandler(this.WyjdzZGry)));
+            messageDialog.Commands.Add(new UICommand("Nie"));
+            messageDialog.DefaultCommandIndex = 0;
+            messageDialog.CancelCommandIndex = 1;
+            messageDialog.ShowAsync();
         }
 
         private void PodajWynik(object sender, RoutedEventArgs e)
@@ -335,36 +353,108 @@ namespace Gra_w_kosci
                         gracz2.BorderBrush = new SolidColorBrush(Colors.Black);
                         break;
                     case 2:
-                        gracz2.BorderBrush = new SolidColorBrush(Colors.Black);
+                        gracz3.BorderBrush = new SolidColorBrush(Colors.Black);
                         break;
                     case 3:
-                        gracz3.BorderBrush = new SolidColorBrush(Colors.Black);
+                        gracz4.BorderBrush = new SolidColorBrush(Colors.Black);
                         break;
                 }
 
                 aktualnyGracz = (aktualnyGracz + 1) % liczbaGraczy;
 
-                switch (aktualnyGracz)
+                if (aktualnyGracz == 0)
+                    kolejka++;
+
+                if(kolejka==14)
                 {
-                    case 0:
-                        gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
-                        break;
-                    case 1:
-                        gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
-                        break;
-                    case 2:
-                        gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
-                        break;
-                    case 3:
-                        gracz3.BorderBrush = new SolidColorBrush(Colors.Red);
-                        break;
+                    //koniec gry
+                    int max = punktyGraczy[0, 0];
+                    int[] wygraniGracze = new int[liczbaGraczy];
+                    wygraniGracze[0]=1;
+
+                    for (int i = 1; i < liczbaGraczy; i++)
+                    {
+                        if(max<=punktyGraczy[i,0])
+                        {
+                            if(max == punktyGraczy[i, 0])
+                            {
+                                wygraniGracze[i] = 1;
+                            }
+                            else
+                            {
+                                wygraniGracze = new int[liczbaGraczy];
+                                wygraniGracze[i] = 1;
+                                max = punktyGraczy[i, 0];
+                            }
+                        }
+                    }
+
+                    string komunikat = "Wygrał ";
+                    bool flaga = false;
+                    for (int i = 0; i < wygraniGracze.Length; i++)
+                    {
+                        if(wygraniGracze[i]==1)
+                        {
+                            if(flaga)
+                            {
+                                komunikat = komunikat + (" i Gracz " + (i + 1));
+                            }
+                            else
+                            {
+                                komunikat = komunikat + ("Gracz " + (i + 1));
+                                flaga = true;
+                            }
+                        }
+                    }
+                    komunikat = komunikat + ".";
+
+                    var messageDialog = new MessageDialog(komunikat);
+                    messageDialog.Commands.Add(new UICommand("Nowa Gra", new UICommandInvokedHandler(this.NowaGra2)));
+                    messageDialog.Commands.Add(new UICommand("Wyjdź z gry", new UICommandInvokedHandler(this.WyjdzZGry)));
+                    messageDialog.DefaultCommandIndex = 0;
+                    messageDialog.CancelCommandIndex = 1;
+                    messageDialog.ShowAsync();
+                }
+                else
+                {
+                    switch (aktualnyGracz)
+                    {
+                        case 0:
+                            gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
+                            break;
+                        case 1:
+                            gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
+                            break;
+                        case 2:
+                            gracz3.BorderBrush = new SolidColorBrush(Colors.Red);
+                            break;
+                        case 3:
+                            gracz4.BorderBrush = new SolidColorBrush(Colors.Red);
+                            break;
+                    }
                 }
             }
 
             wartosciKosci = new int[5];
             kosciDoRzucenia = new[] { 1, 1, 1, 1, 1 };
             WyswietlKosci(kosciDoRzucenia,wartosciKosci);
+            rzutKoscmi.IsEnabled = true;
             rzut = 0;
+        }
+
+        private void NowaGra2(IUICommand command)
+        {
+            this.Frame.Navigate(typeof(liczbaGraczy));
+        }
+
+        private void WyjdzZGry(IUICommand command)
+        {
+            App.Current.Exit();
+        }
+
+        private void StronaGlowna(IUICommand command)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }

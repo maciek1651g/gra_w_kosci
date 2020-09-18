@@ -33,6 +33,7 @@ namespace Gra_w_kosci
         int[,] punktyGraczy;
         int aktualnyGracz = 0;
         int kolejka=1;
+        bool[] komputerWybory = new bool[13];
 
         public graUproszczona()
         {
@@ -56,6 +57,7 @@ namespace Gra_w_kosci
                 case 1:
                     gracz1.Visibility = Visibility.Visible;
                     komputer.Visibility = Visibility.Visible;
+                    liczbaGraczy++;
                     break;
                 case 2:
                     gracz1.Visibility = Visibility.Visible;
@@ -74,6 +76,7 @@ namespace Gra_w_kosci
                     break;
             }
             punktyGraczy = new int[liczbaGraczy, 2];
+            liczbaGraczy--;
             aktualnyGracz = 0;
             kolejka = 1;
             gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -191,7 +194,7 @@ namespace Gra_w_kosci
             {
                 if(kosciDorzucenia[i]!=0)
                 {
-                    wartosci[i] = random.Next(1, 6);
+                    wartosci[i] = random.Next(1, 7);
                 }
             }
         }
@@ -338,64 +341,174 @@ namespace Gra_w_kosci
 
         private void NastepnyGracz()
         {
-            if(liczbaGraczy==1)
+            if (liczbaGraczy == 1)
             {
                 //ruch komputera
-            }
-            else
-            {
-                switch(aktualnyGracz)
+                kosciDoRzucenia = new[] { 1, 1, 1, 1, 1 };
+                Losowanko(kosciDoRzucenia, wartosciKosci);
+                int[] tablicaWynikow = new int[13];
+                tablicaWynikow[0] = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 1);
+                tablicaWynikow[1] = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 2);
+                tablicaWynikow[2] = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 3);
+                tablicaWynikow[3] = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 4);
+                tablicaWynikow[4] = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 5);
+                tablicaWynikow[5] = LiczeniePunktow.PunktyZaKonkretneKostki(wartosciKosci, 6);
+                tablicaWynikow[6] = LiczeniePunktow.TrojkaKosci(wartosciKosci);
+                tablicaWynikow[7] = LiczeniePunktow.CzworkaKosci(wartosciKosci);
+                tablicaWynikow[8] = LiczeniePunktow.Full(wartosciKosci);
+                tablicaWynikow[9] = LiczeniePunktow.MalyStrit(wartosciKosci);
+                tablicaWynikow[10] = LiczeniePunktow.DuzyStrit(wartosciKosci);
+                tablicaWynikow[11] = LiczeniePunktow.Poker(wartosciKosci);
+                tablicaWynikow[12] = LiczeniePunktow.Szansa(wartosciKosci);
+
+                int j = 0;
+                while(komputerWybory[j]==true)
                 {
-                    case 0:
-                        gracz1.BorderBrush = new SolidColorBrush(Colors.Black);
-                        break;
-                    case 1:
-                        gracz2.BorderBrush = new SolidColorBrush(Colors.Black);
-                        break;
-                    case 2:
-                        gracz3.BorderBrush = new SolidColorBrush(Colors.Black);
-                        break;
-                    case 3:
-                        gracz4.BorderBrush = new SolidColorBrush(Colors.Black);
-                        break;
+                    j++;
                 }
 
-                aktualnyGracz = (aktualnyGracz + 1) % liczbaGraczy;
+                int max = tablicaWynikow[j];
+                int wybrany = j;
 
-                if (aktualnyGracz == 0)
-                    kolejka++;
-
-                if(kolejka==14)
+                for (int i = j; i < tablicaWynikow.Length; i++)
                 {
-                    //koniec gry
-                    int max = punktyGraczy[0, 0];
-                    int[] wygraniGracze = new int[liczbaGraczy];
-                    wygraniGracze[0]=1;
-
-                    for (int i = 1; i < liczbaGraczy; i++)
+                    if (komputerWybory[i] == false && tablicaWynikow[i] > max)
                     {
-                        if(max<=punktyGraczy[i,0])
+                        max = tablicaWynikow[i];
+                        wybrany = i;
+                    }
+                }
+
+                bool f = false;
+                if (punktyGraczy[aktualnyGracz, 1] < 63)
+                {
+                    f = true;
+                }
+
+                if (wybrany <= 5)
+                    punktyGraczy[1, 1] += max;
+                punktyGraczy[1, 0] += max;
+
+                if (punktyGraczy[1, 1] >= 63 && f)
+                {
+                    punktyGraczy[1, 0] += 35;
+                    bonusKomputer.Text = "35";
+                }
+
+                wynikKomputer.Text = punktyGraczy[1, 0].ToString();
+                komputerWybory[wybrany] = true;
+                switch (wybrany)
+                {
+                    case 0:
+                        w1.Content = max;
+                        w1.IsEnabled = false;
+                        break;
+                    case 1:
+                        w2.Content = max;
+                        w2.IsEnabled = false;
+                        break;
+                    case 2:
+                        w3.Content = max;
+                        w3.IsEnabled = false;
+                        break;
+                    case 3:
+                        w4.Content = max;
+                        w4.IsEnabled = false;
+                        break;
+                    case 4:
+                        w5.Content = max;
+                        w5.IsEnabled = false;
+                        break;
+                    case 5:
+                        w6.Content = max;
+                        w6.IsEnabled = false;
+                        break;
+                    case 6:
+                        w7.Content = max;
+                        w7.IsEnabled = false;
+                        break;
+                    case 7:
+                        w8.Content = max;
+                        w8.IsEnabled = false;
+                        break;
+                    case 8:
+                        w9.Content = max;
+                        w9.IsEnabled = false;
+                        break;
+                    case 9:
+                        w10.Content = max;
+                        w10.IsEnabled = false;
+                        break;
+                    case 10:
+                        w11.Content = max;
+                        w11.IsEnabled = false;
+                        break;
+                    case 11:
+                        w12.Content = max;
+                        w12.IsEnabled = false;
+                        break;
+                    case 12:
+                        w13.Content = max;
+                        w13.IsEnabled = false;
+                        break;
+                }
+            }
+
+            switch (aktualnyGracz)
+            {
+                case 0:
+                    gracz1.BorderBrush = new SolidColorBrush(Colors.Black);
+                    break;
+                case 1:
+                    gracz2.BorderBrush = new SolidColorBrush(Colors.Black);
+                    break;
+                case 2:
+                    gracz3.BorderBrush = new SolidColorBrush(Colors.Black);
+                    break;
+                case 3:
+                    gracz4.BorderBrush = new SolidColorBrush(Colors.Black);
+                    break;
+            }
+
+            aktualnyGracz = (aktualnyGracz + 1) % liczbaGraczy;
+
+            if (aktualnyGracz == 0)
+                kolejka++;
+
+            if (kolejka == 14)
+            {
+                //koniec gry
+                int max = punktyGraczy[0, 0];
+                int[] wygraniGracze = new int[liczbaGraczy];
+                wygraniGracze[0] = 1;
+
+                for (int i = 1; i < liczbaGraczy; i++)
+                {
+                    if (max <= punktyGraczy[i, 0])
+                    {
+                        if (max == punktyGraczy[i, 0])
                         {
-                            if(max == punktyGraczy[i, 0])
-                            {
-                                wygraniGracze[i] = 1;
-                            }
-                            else
-                            {
-                                wygraniGracze = new int[liczbaGraczy];
-                                wygraniGracze[i] = 1;
-                                max = punktyGraczy[i, 0];
-                            }
+                            wygraniGracze[i] = 1;
+                        }
+                        else
+                        {
+                            wygraniGracze = new int[liczbaGraczy];
+                            wygraniGracze[i] = 1;
+                            max = punktyGraczy[i, 0];
                         }
                     }
+                }
 
-                    string komunikat = "Wygrał ";
+                string komunikat = "Wygrał ";
+
+                if (liczbaGraczy != 1)
+                {
                     bool flaga = false;
                     for (int i = 0; i < wygraniGracze.Length; i++)
                     {
-                        if(wygraniGracze[i]==1)
+                        if (wygraniGracze[i] == 1)
                         {
-                            if(flaga)
+                            if (flaga)
                             {
                                 komunikat = komunikat + (" i Gracz " + (i + 1));
                             }
@@ -407,31 +520,46 @@ namespace Gra_w_kosci
                         }
                     }
                     komunikat = komunikat + ".";
-
-                    var messageDialog = new MessageDialog(komunikat);
-                    messageDialog.Commands.Add(new UICommand("Nowa Gra", new UICommandInvokedHandler(this.NowaGra2)));
-                    messageDialog.Commands.Add(new UICommand("Wyjdź z gry", new UICommandInvokedHandler(this.WyjdzZGry)));
-                    messageDialog.DefaultCommandIndex = 0;
-                    messageDialog.CancelCommandIndex = 1;
-                    messageDialog.ShowAsync();
                 }
                 else
                 {
-                    switch (aktualnyGracz)
+                    if(punktyGraczy[0,0]==punktyGraczy[1,0])
                     {
-                        case 0:
-                            gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
-                            break;
-                        case 1:
-                            gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
-                            break;
-                        case 2:
-                            gracz3.BorderBrush = new SolidColorBrush(Colors.Red);
-                            break;
-                        case 3:
-                            gracz4.BorderBrush = new SolidColorBrush(Colors.Red);
-                            break;
+                        komunikat = "Remis!";
                     }
+                    else if(punktyGraczy[0, 0] > punktyGraczy[1, 0])
+                    {
+                        komunikat = "Wygrał Gracz 1.";
+                    }
+                    else
+                    {
+                        komunikat = "Wygrał komputer.";
+                    }
+                }
+
+                var messageDialog = new MessageDialog(komunikat);
+                messageDialog.Commands.Add(new UICommand("Nowa Gra", new UICommandInvokedHandler(this.NowaGra2)));
+                messageDialog.Commands.Add(new UICommand("Wyjdź z gry", new UICommandInvokedHandler(this.WyjdzZGry)));
+                messageDialog.DefaultCommandIndex = 0;
+                messageDialog.CancelCommandIndex = 1;
+                messageDialog.ShowAsync();
+            }
+            else
+            {
+                switch (aktualnyGracz)
+                {
+                    case 0:
+                        gracz1.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                    case 1:
+                        gracz2.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                    case 2:
+                        gracz3.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
+                    case 3:
+                        gracz4.BorderBrush = new SolidColorBrush(Colors.Red);
+                        break;
                 }
             }
 
